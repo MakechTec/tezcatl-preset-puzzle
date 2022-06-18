@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "downlevelIteration": true,
+        "outDir": "./prebuild",
+    },
+    "files":[
+      "./src/PuzzleCLI.ts",
+    ]
+  }
