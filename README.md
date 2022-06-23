@@ -2,7 +2,7 @@
 
 ### Installation ###
 
-    $ npm install @makechtec/tezcatl-preset-puzzle
+    $ npm install @makechtec/tezcatl-preset-puzzle --save-dev
 
 in your tezcatl.config.json file:
 
