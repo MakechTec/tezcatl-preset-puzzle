@@ -1,0 +1,5 @@
+some text
+it should be compiled
+as 
+${name}
+template
