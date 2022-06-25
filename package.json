@@ -23,6 +23,7 @@
     "@makechtec/tezcatl-conditional-processor": "^1.0.1",
     "@makechtec/tezcatl-constants": "^1.0.0",
     "@makechtec/tezcatl-iterative-processor": "^1.0.1",
+    "@makechtec/tezcatl-settings": "^1.0.1",
     "@types/node": "^18.0.0"
   }
 }

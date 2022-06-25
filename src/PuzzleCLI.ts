@@ -1,9 +1,9 @@
-import {CONFIG_FILE, TEMPLATE_EXTENSION} from "@makechtec/tezcatl-constants";
+import {TEMPLATE_EXTENSION} from "@makechtec/tezcatl-constants";
 import {Reader, Writter, CLI} from "@makechtec/tezcatl-cli";
-import {cwd} from "node:process";
 import {Pipe} from "@makechtec/pipe";
 import {ConditionalProcessor} from "@makechtec/tezcatl-conditional-processor";
 import {IterativeProcessor} from "@makechtec/tezcatl-iterative-processor";
+import {Settings} from "@makechtec/tezcatl-settings";
 
 export const run = () => {
     
@@ -11,7 +11,7 @@ export const run = () => {
     const block = CLI.getArgumentValue(ARGS.block);
     const moreArgs = CLI.getAllArguments();
     
-    const config = readConfig();
+    const config = Settings.get();
     let fileName = CLI.getArgumentValue(ARGS.file).value;
 
     if(fileName === ""){
@@ -40,19 +40,6 @@ export const run = () => {
     console.log(finalContent);
     Writter.insertInLine(fileName, line.value, finalContent);
 
-};
-
-export const readConfig = (): any => {
-
-    try{
-        let content = Reader.read( cwd() + "/" + CONFIG_FILE);
-        return JSON.parse(content);
-    }
-    catch(e){
-        return {
-            file: "",
-        };
-    }
 };
 
 export const readTemplate = (templateName: string): string => {
