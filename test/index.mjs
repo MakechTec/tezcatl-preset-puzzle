@@ -1,3 +1,3 @@
-import {run} from "../prebuild/PuzzleCli.js";
+import {run} from "../index.js";
 
 run();

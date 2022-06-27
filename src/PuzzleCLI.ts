@@ -10,14 +10,14 @@ export const run = () => {
     const line = CLI.getArgumentValue(ARGS.line);
     const block = CLI.getArgumentValue(ARGS.block);
     const moreArgs = CLI.getAllArguments();
-    
     const config = Settings.get();
     let fileName = CLI.getArgumentValue(ARGS.file).value;
+
 
     if(fileName === ""){
         fileName = config.file;
     }
-
+    
     let content = readTemplate(block.value);
 
     let pipe = new Pipe(content);
@@ -25,7 +25,7 @@ export const run = () => {
     const conditionalProcessor = new ConditionalProcessor();
     const iterativeProcessor = new IterativeProcessor();
     
-
+    
     let finalContent = pipe.addAction( (newContent: string) => {
                             return conditionalProcessor.parse(newContent);
                         } )
@@ -37,25 +37,37 @@ export const run = () => {
                         })
                         .execActions();
 
-    console.log(finalContent);
     Writter.insertInLine(fileName, line.value, finalContent);
 
 };
 
-export const readTemplate = (templateName: string): string => {
-    let content = Reader.read( USER_TEMPLATE_DIR + templateName + TEMPLATE_EXTENSION);
+export const readTemplate = (templateName : string): string => {
+
+    let templateDir = CLI.getArgumentValue(ARGS.templateDir);
+    let content = "";
+
+    if(templateDir === ""){
+        templateDir = Settings.get().templateDir;
+        content = Reader.read(templateDir + templateName + TEMPLATE_EXTENSION);
+    }
+
+    if(content === ""){
+        content = Reader.read(USER_TEMPLATE_DIR + templateName + TEMPLATE_EXTENSION);
+    }
 
     if(content === ""){
         content = Reader.read(DEFAULT_TEMPLATE_DIR + templateName + TEMPLATE_EXTENSION);
     }
 
     return content;
-};
+
+}
 
 const ARGS = {
     file: "f",
     line: "l",
     block: "b",
+    templateDir: "templateDir"
 };
 
 const USER_TEMPLATE_DIR = "./templates/";
