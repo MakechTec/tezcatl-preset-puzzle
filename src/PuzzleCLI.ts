@@ -4,40 +4,41 @@ import {Pipe} from "@makechtec/pipe";
 import {ConditionalProcessor} from "@makechtec/tezcatl-conditional-processor";
 import {IterativeProcessor} from "@makechtec/tezcatl-iterative-processor";
 import {Settings} from "@makechtec/tezcatl-settings";
+import { PlaceholderProcessor } from "@makechtec/tezcatl-placeholder-processor";
 
 export const run = () => {
+
+    const conditionalProcessor = new ConditionalProcessor();
+    const iterativeProcessor = new IterativeProcessor();
+    const placeholderProcessor = new PlaceholderProcessor();
     
-    const line = CLI.getArgumentValue(ARGS.line);
-    const block = CLI.getArgumentValue(ARGS.block);
-    const moreArgs = CLI.getAllArguments();
-    const config = Settings.get();
+    let line = CLI.getArgumentValue(ARGS.line).value;
+    let block = CLI.getArgumentValue(ARGS.block).value;
     let fileName = CLI.getArgumentValue(ARGS.file).value;
+
+    const config = Settings.get();
 
 
     if(fileName === ""){
         fileName = config.file;
     }
     
-    let content = readTemplate(block.value);
-
-    let pipe = new Pipe(content);
-
-    const conditionalProcessor = new ConditionalProcessor();
-    const iterativeProcessor = new IterativeProcessor();
+    let content = readTemplate(block);
     
     
-    let finalContent = pipe.addAction( (newContent: string) => {
-                            return conditionalProcessor.parse(newContent);
-                        } )
-                        .addAction( (newContent: string) => {
-                            return iterativeProcessor.parse(newContent);
-                        })
-                        .addAction( (newContent: string) => {
-                            return Reader.changePlaceholders(newContent, moreArgs);
-                        })
-                        .execActions();
+    let finalContent = (new Pipe(content))
+    .addAction( (newContent: string) => {
+        return conditionalProcessor.parse(newContent);
+    } )
+    .addAction( (newContent: string) => {
+        return iterativeProcessor.parse(newContent);
+    })
+    .addAction( (newContent: string) => {
+        return placeholderProcessor.parse(newContent);
+    })
+    .execActions();
 
-    Writter.insertInLine(fileName, line.value, finalContent);
+    Writter.insertInLine(fileName, line, finalContent);
 
 };
 
@@ -46,7 +47,7 @@ export const readTemplate = (templateName : string): string => {
     let templateDir = CLI.getArgumentValue(ARGS.templateDir);
     let content = "";
 
-    if(templateDir === ""){
+    if(templateDir.value === ""){
         templateDir = Settings.get().templateDir;
         content = Reader.read(templateDir + templateName + TEMPLATE_EXTENSION);
     }
@@ -63,12 +64,12 @@ export const readTemplate = (templateName : string): string => {
 
 }
 
-const ARGS = {
+export const ARGS = {
     file: "f",
     line: "l",
     block: "b",
     templateDir: "templateDir"
 };
 
-const USER_TEMPLATE_DIR = "./templates/";
-const DEFAULT_TEMPLATE_DIR = "./node_modules/@makechtec/tezcatl-preset-puzzle/templates/";
+export const USER_TEMPLATE_DIR = "./templates/";
+export const DEFAULT_TEMPLATE_DIR = "./node_modules/@makechtec/tezcatl-preset-puzzle/templates/";

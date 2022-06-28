@@ -1,6 +1,6 @@
 {
   "name": "@makechtec/tezcatl-preset-puzzle",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -18,12 +18,13 @@
   },
   "homepage": "https://github.com/angeldomp49/tezcatl-preset-puzzle#readme",
   "dependencies": {
-    "@makechtec/pipe": "^1.0.6",
-    "@makechtec/tezcatl-cli": "^1.0.11",
+    "@makechtec/pipe": "^1.0.7",
+    "@makechtec/tezcatl-cli": "^1.0.12",
     "@makechtec/tezcatl-conditional-processor": "^1.0.2",
     "@makechtec/tezcatl-constants": "^1.0.1",
     "@makechtec/tezcatl-iterative-processor": "^1.1.4",
-    "@makechtec/tezcatl-settings": "^1.0.2",
+    "@makechtec/tezcatl-placeholder-processor": "^1.0.1",
+    "@makechtec/tezcatl-settings": "^1.0.3",
     "@types/node": "^18.0.0"
   }
 }
