@@ -1,0 +1,3 @@
+@if(private) private @endif ${name}( @foreach(param) ${param.name} @endforeach ) {
+    @if(return) @endforeach
+}

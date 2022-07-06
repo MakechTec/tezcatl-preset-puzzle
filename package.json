@@ -1,11 +1,11 @@
 {
   "name": "@makechtec/tezcatl-preset-puzzle",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "",
   "main": "index.js",
   "scripts": {
     "compile": "tsc && terser prebuild/PuzzleCLI.js --output index.js",
-    "test": "node test/index.mjs l=3 b=f com=Component imp1.name=React imp1.path='react'"
+    "test": "node test/index.mjs"
   },
   "repository": {
     "type": "git",
@@ -20,11 +20,11 @@
   "dependencies": {
     "@makechtec/pipe": "^1.0.7",
     "@makechtec/tezcatl-cli": "^1.0.12",
-    "@makechtec/tezcatl-conditional-processor": "^1.0.2",
-    "@makechtec/tezcatl-constants": "^1.0.1",
-    "@makechtec/tezcatl-iterative-processor": "^1.1.4",
-    "@makechtec/tezcatl-placeholder-processor": "^1.0.1",
+    "@makechtec/tezcatl-conditional-processor": "^1.0.3",
+    "@makechtec/tezcatl-constants": "^1.0.3",
+    "@makechtec/tezcatl-iterative-processor": "^1.1.5",
+    "@makechtec/tezcatl-placeholder-processor": "^1.0.2",
     "@makechtec/tezcatl-settings": "^1.0.3",
-    "@types/node": "^18.0.0"
+    "@types/node": "^18.0.3"
   }
 }

@@ -49,7 +49,7 @@ export const readTemplate = (templateName : string): string => {
 
     if(templateDir.value === ""){
         templateDir = Settings.get().templateDir;
-        content = Reader.read(templateDir + templateName + TEMPLATE_EXTENSION);
+        content = Reader.read(templateDir + "/" + templateName +TEMPLATE_EXTENSION);
     }
 
     if(content === ""){

@@ -1,0 +1,9 @@
+@if(self-closed)
+<${name} @if(style) style={{}} @style @foreach(attr) ${attr.name}=${attr.value} @endforeach />
+@else
+<${name} @if(style) style={{}} @style @foreach(attr) ${attr.name}={${attr.value}} @endforeach >
+@if(children)
+{children}
+@endif
+</${name}>
+@endif

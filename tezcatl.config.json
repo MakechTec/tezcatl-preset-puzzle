@@ -1,4 +1,4 @@
 {
-    "file": "test/example.js",
-    "templateDir": "./templates"
+    "file": "test/w.js",
+    "templateDir": "./templates/react"
 }

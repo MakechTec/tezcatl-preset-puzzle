@@ -1,0 +1,23 @@
+import React from 'react';
+
+@if(export) export @endif const ${name} = ( { @foreach(prop) ${prop.name} ,@endforeach @if(children) children, @endif @if(style) style, @endif } ) => {
+
+    @foreach(state)
+    const [${state.name}, set${state.name}] = React.useState(${state.default});
+    @endforeach
+
+    @foreach(effect)
+    React.useEffect(() => {
+        ${effect.name}();
+    }, []);
+    @endforeach
+
+    return(
+        <${wrapper} @if(style) style={style} @endif @foreach(attr) ${attr.name}={${attr.value}} @endforeach>
+        @if(children)
+        {children}
+        @endif
+        </${wrapper}>
+    );
+}
+@if(default) export default ${name} @endif

@@ -1,0 +1,14 @@
+export @if(default) default @endif class ${main}{
+
+    @foreach(prop)
+    ${prop.name}: ${prop.type};
+    @endforeach
+    
+    @if(constructor)
+    constructor( @foreach(prop) ${prop.name} : ${prop.type}, @endforeach ){
+
+    }
+    @endif
+
+    
+}
