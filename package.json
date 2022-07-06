@@ -1,6 +1,6 @@
 {
   "name": "@makechtec/tezcatl-preset-puzzle",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "@makechtec/tezcatl-conditional-processor": "^1.0.3",
     "@makechtec/tezcatl-constants": "^1.0.3",
     "@makechtec/tezcatl-iterative-processor": "^1.1.5",
-    "@makechtec/tezcatl-placeholder-processor": "^1.0.2",
+    "@makechtec/tezcatl-placeholder-processor": "^1.0.3",
     "@makechtec/tezcatl-settings": "^1.0.3",
     "@types/node": "^18.0.3"
   }
