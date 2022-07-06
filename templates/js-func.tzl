@@ -1,3 +1,5 @@
 @if(export) export @endif const ${name} = ( @foreach(param) ${param.name} @endforeach ) => {
     @if(return) return @endif;
 };
+
+@if(default) export default ${name}; @endif

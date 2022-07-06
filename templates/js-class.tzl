@@ -1,4 +1,4 @@
-@if(export) export @endif @if(default) default @endif class ${main}{
+@if(export) export @endif @if(default) default @endif class ${name}{
 
     @foreach(prop)
     ${prop.name};
